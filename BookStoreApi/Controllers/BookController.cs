@@ -32,5 +32,26 @@ namespace BookStoreApi.Controllers
             var response = Book.Listar();            
             return Ok(response);
         }
+        
+        [HttpPut]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult Update([FromRoute] int id, [FromBody] Book bookUpted)
+        {
+            Book.Atualizar(id, bookUpted);
+            
+            return NoContent();
+        }
+        
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            Book.Deletar(id);
+            
+            return NoContent();
+        }
     }
 }
